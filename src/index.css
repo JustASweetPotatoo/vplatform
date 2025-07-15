@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+/* @import "@fortawesome/fontawesome-free/css/all.min.css"; */
+@import "react-toastify/dist/ReactToastify.css";
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  font-family: iCielPantonLight, iCielPantonLightItalic, system-ui, -apple-system, /* Firefox supports this but not yet `system-ui` */ "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+@font-face {
+  font-family: "iCielPanton";
+  src: url("./assets/fonts/iCielPanton-Black.otf") format("woff2");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "iCielPantonItalic";
+  src: url("./assets/fonts/iCielPanton-BlackItalic.otf") format("woff2");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "iCielPantonLight";
+  src: url("./assets/fonts/iCielPanton-Light.woff2") format("woff2");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "iCielPantonLightItalic";
+  src: url("./assets/fonts/iCielPanton-LightItalic.woff2") format("woff2");
+  font-style: normal;
+}
