@@ -10,7 +10,17 @@ class RouteRenderer {
     return routeConfigList.map((config) => {
       const Page = config.page;
 
-      return <Route key={config.path} path={config.path} element={<Page />}></Route>;
+      if (config.children && config.children.length > 0) {
+        return (
+          <Route key={config.path} path={config.path} element={<Page />}>
+            {config.children.map((child) => (
+              <Route key={child.path} path={child.path} element={<child.page />} />
+            ))}
+          </Route>
+        );
+      }
+
+      return <Route key={config.path} path={config.path} element={<Page />} />;
     });
   }
 }

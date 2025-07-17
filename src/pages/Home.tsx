@@ -1,5 +1,5 @@
 import layoutCrafter from "./layouts/LayoutCrafter";
-import { DefaultLayout } from "./layouts/DefaultLayout";
+import { DefaultLayout } from "./layouts/list/DefaultLayout";
 import { useEffect, useState } from "react";
 import { defineState } from "../auth/utils";
 import { HomePageRouteConfig } from "../routes/config";
@@ -17,7 +17,7 @@ const HomePage = () => {
   };
 
   const MainContent = (
-    <section className={"bg-[hsl(0,0%,83%)] dark:bg-[hsl(0,0%,16%)]" + ` min-h-[calc(200vh-4rem)] transition-all`}>
+    <section className={"bg-[hsl(0,0%,80%)] dark:bg-[hsl(0,0%,16%)]" + ` min-h-[calc(200vh-4rem)] transition-all`}>
       <button className="border bg-gray-300" onClick={handleCounterButton}>
         {"button"}
       </button>

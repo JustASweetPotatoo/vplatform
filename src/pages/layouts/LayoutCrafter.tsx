@@ -5,8 +5,8 @@ import { useAppSelector } from "../../redux/hooks";
 
 class LayoutCrafter {
   loadLayout(layout: Layout, _pageRenderState: RouteStateType, Content: JSX.Element): React.ReactNode {
-    let Header = layout.header;
-    let Footer = layout.footer;
+    let Header = layout.Header;
+    let Footer = layout.Footer;
 
     const theme = useAppSelector((state) => state.themeSlice);
 
