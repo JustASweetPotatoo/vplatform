@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import themeSlice from "./reducer/ThemeSlices";
+import themeSlice from "./reducer/slices/ThemeSlices";
 import { saveThemeToLocalStorage } from "./middleware/saveThemeLocalStorage";
+import postDetailModalSlice from "./reducer/slices/PostDetailModalSlices";
 
 export const store = configureStore({
-  reducer: { themeSlice: themeSlice.reducer },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(saveThemeToLocalStorage),
+  reducer: { themeSlice: themeSlice.reducer, postDetailModalSlice: postDetailModalSlice.reducer },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware().concat(saveThemeToLocalStorage);
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

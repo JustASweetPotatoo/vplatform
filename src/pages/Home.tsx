@@ -3,7 +3,7 @@ import { DefaultLayout } from "./layouts/list/DefaultLayout";
 import { useEffect, useState } from "react";
 import { defineState } from "../auth/utils";
 import { HomePageRouteConfig } from "../routes/config";
-import { changeTheme } from "../redux/reducer/ThemeSlices";
+import { changeTheme } from "../redux/reducer/slices/ThemeSlices";
 import { useAppDispatch } from "../redux/hooks";
 
 const HomePage = () => {

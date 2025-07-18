@@ -39,18 +39,21 @@ const Header = () => {
   const filteredResults = search.trim() ? mockResults.filter((r) => r.toLowerCase().includes(search.toLowerCase())) : [];
 
   return (
-    <header className="w-full min-h-16 bg-[hsl(0,0%,30%)] dark:bg-[#1a1a1a] text-white fixed z-50">
-      <div className="container mx-auto h-16 flex items-center justify-between px-5">
-        <div className="w-[20rem] flex items-center gap-4 flex-1 max-w-4xl min-h-full">
-          <Link to={"/"}>
-            <div className="text-2xl font-extrabold whitespace-nowrap" id="header-logo">
+    <header className="w-full min-h-16 bg-[hsl(0,0%,30%)] dark:bg-[#1a1a1a] text-white fixed z-50 border-1 border-[#4f4f4f]">
+      <div className="w-full h-16 flex items-center justify-between">
+        {/* "Logo" */}
+        <div className="w-[30rem] pl-10">
+          <Link to={"/"} className="w-fit flex">
+            <div className="w-fit px-4 text-2xl font-extrabold whitespace-nowrap" id="header-logo">
               {/* <img className="h-40 w-auto object-contain" src={logo} alt="Logo" /> */}
               VPlatform
             </div>
           </Link>
+        </div>
 
+        <div className="w-[20rem] flex items-center gap-4 flex-1 max-w-4xl min-h-full">
           <div ref={searchRef} className="relative flex-1">
-            <div className={`flex items-center px-4 py-1 ml-10 h-[4rem  ] rounded-3xl transition-all duration-200 ${focused ? "bg-white" : "bg-gray-300"}`}>
+            <div className={`flex items-center px-4 py-1 h-[2rem] rounded-3xl transition-all duration-200 ${focused ? "bg-white" : "bg-gray-300"}`}>
               <input
                 type="text"
                 value={search}
@@ -95,16 +98,16 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-3 font-semibold text-sm ml-5">
-          <button className="lg:px-6 px-4 h-9 border-2 rounded-3xl flex items-center space-x-2 bg-[#4f4f4f] text-white hover:bg-white hover:text-[#4f4f4f] transition-all">
+        <div className="w-[30rem] flex justify-end pr-10 items-center space-x-3 font-semibold text-sm">
+          <button className="lg:px-6 px-4 h-9 border-2 rounded-3xl cursor-pointer flex items-center space-x-2 tex t-white hover:bg-white hover:text-[#4f4f4f] transition-all">
             <span className="hidden lg:flex">ĐĂNG NHẬP</span>
             <FontAwesomeIcon icon={faRightToBracket} />
           </button>
-          <button className="lg:px-6 px-4 h-9 rounded-3xl flex items-center space-x-2 bg-[#ff3974] hover:bg-[#ff65a0] text-white transition-all">
+          <button className="lg:px-6 px-4 h-9 rounded-3xl cursor-pointer flex items-center space-x-2 bg-[#ff3974] hover:bg-[#ff65a0] text-white transition-all">
             <span className="hidden lg:flex">ĐĂNG KÝ</span>
             <FontAwesomeIcon icon={faUserPlus} />
           </button>
-          <button className="px-3 h-9 rounded-3xl flex items-center space-x-2 bg-[#4f4f4f] hover:bg-white hover:text-[#4f4f4f] text-white transition-all">
+          <button className="px-3 h-9 rounded-3xl cursor-pointer flex items-center space-x-2  hover:bg-white hover:text-[#4f4f4f] text-white transition-all">
             <FontAwesomeIcon icon={faGlobe} />
             <span className="hidden lg:flex">VI/VN</span>
           </button>

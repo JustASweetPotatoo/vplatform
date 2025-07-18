@@ -1,5 +1,5 @@
 import type { Middleware } from "@reduxjs/toolkit";
-import { changeTheme } from "../reducer/ThemeSlices";
+import { changeTheme } from "../reducer/slices/ThemeSlices";
 import { LocalStorageKey } from "../../localStorage/storage";
 
 export const saveThemeToLocalStorage: Middleware = (_store) => (next) => (action) => {

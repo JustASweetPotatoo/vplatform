@@ -28,6 +28,10 @@ export const ConfessionPageRouteConfig: RouteConfig = {
   page: ConfessionPage,
   children: [
     {
+      path: "",
+      page: MainContentConfessionTable,
+    },
+    {
       path: "message",
       page: MainContentConfessionTable,
     },

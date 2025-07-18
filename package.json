@@ -29,6 +29,7 @@
     "react-toastify": "^11.0.5",
     "redux": "^5.0.1",
     "sass": "^1.87.0",
+    "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.1.5",
     "ts-node": "^10.9.2",
     "undici": "^7.9.0",
@@ -47,7 +48,8 @@
     "globals": "^16.0.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.26.1",
-    "vite": "^6.3.1"
+    "vite": "^6.3.1",
+    "vite-plugin-svgr": "^4.3.0"
   },
   "author": "QuangHuy/Potarozz",
   "license": "ISC",

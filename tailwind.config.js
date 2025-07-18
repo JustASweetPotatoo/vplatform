@@ -3,8 +3,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xs: "320px", // tương đương 20rem
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
   darkMode: "class",
 };
