@@ -1,19 +1,18 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark, faChevronUp, faChevronDown, faComment, faPlus, faFaceSmile } from "@fortawesome/free-solid-svg-icons";
-import { type Post } from "../../interface/Post";
-import { removeDisplayPost } from "../../redux/reducer/slices/PostDetailModalSlices";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { type Post } from "../../../../interface/Post";
+import { removeDisplayPost } from "../../../../redux/reducer/slices/PostModalSlices";
 import { useDispatch } from "react-redux";
-import PostItem from "./MainContentConfessionTable/PostItem";
-import { Link } from "react-router-dom";
-import PostCommentRender from "./MainContentConfessionTable/PostCommentRender";
+import PostItem from "../PostItem";
+import PostCommentRender from "../PostCommentRender";
 
 interface Props {
   isOpen: boolean;
   post: Post | null;
 }
 
-const PostDisplayModal: React.FC<Props> = ({ isOpen, post }) => {
+const PostModalDisplay: React.FC<Props> = ({ isOpen, post }) => {
   const dispatch = useDispatch();
   const handlePostCloseAction = () => {
     dispatch(removeDisplayPost());
@@ -29,7 +28,7 @@ const PostDisplayModal: React.FC<Props> = ({ isOpen, post }) => {
         </button>
 
         {/* Content */}
-        <PostItem data={post} />
+        <PostItem post={post} />
 
         {/* Comment section */}
         <PostCommentRender post={post} />
@@ -38,4 +37,4 @@ const PostDisplayModal: React.FC<Props> = ({ isOpen, post }) => {
   );
 };
 
-export default PostDisplayModal;
+export default PostModalDisplay;

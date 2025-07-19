@@ -1,11 +1,6 @@
 import type { Emoji } from "./Emoji";
+import type { PostImage } from "./Media";
 import type { UserProfile } from "./User";
-
-export interface PostImage {
-  readonly id: string;
-  readonly userId: string;
-  readonly src: string;
-}
 
 export interface PostComment {
   readonly id: string;

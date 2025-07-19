@@ -1,16 +1,31 @@
 import type React from "react";
-import type { PostImage } from "../../../interface/Post";
+import type { PostImage } from "../../../interface/Media";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setDisplayMedia } from "../../../redux/reducer/slices/DisplayMedialSlice";
+import type { Post } from "../../../interface/Post";
 
 interface PostImageRenderProps {
+  post: Post;
   images: PostImage[];
 }
 
-const PostImageRender: React.FC<PostImageRenderProps> = ({ images }) => {
+const PostImageRender: React.FC<PostImageRenderProps> = ({ post, images }) => {
+  const dispatch = useDispatch();
+
   if (images.length == 1) {
     return (
       <div className="w-full mt-5 rounded-2xl flex gap-1 overflow-hidden">
         {images.map((image, i) => (
-          <img src={image.src} key={i} alt="" className="w-full rounded-lg object-cover h-[40rem]" />
+          <Link
+            to={`/confession/media/${image.id}`}
+            className="cursor-pointer"
+            onClick={() => {
+              dispatch(setDisplayMedia({ post: post, mediaId: image.id }));
+            }}
+          >
+            <img src={image.src} key={i} alt="" className="w-full rounded-lg object-cover h-[40rem]" />
+          </Link>
         ))}
       </div>
     );
@@ -18,9 +33,17 @@ const PostImageRender: React.FC<PostImageRenderProps> = ({ images }) => {
 
   if (images.length === 2) {
     return (
-      <div className="w-full mt-5 rounded-2xl flex gap-1 overflow-hidden">
+      <div className="w-full mt-5 rounded-2xl flex flex-col gap-1 overflow-hidden">
         {images.map((image, i) => (
-          <img src={image.src} key={i} alt="" className="w-1/2 rounded-lg object-cover h-[40rem]" />
+          <Link
+            to={`/confession/media/${image.id}`}
+            className="cursor-pointer"
+            onClick={() => {
+              dispatch(setDisplayMedia({ post: post, mediaId: image.id }));
+            }}
+          >
+            <img src={image.src} key={i} alt="" className="w-full rounded-lg object-cover h-[20rem]" />
+          </Link>
         ))}
       </div>
     );

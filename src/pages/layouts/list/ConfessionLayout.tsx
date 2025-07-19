@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightToBracket, faUserPlus, faGlobe, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import type { Layout, LayoutData } from "../interface";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../../redux/store";
 
 const mockResults = ["React", "Tailwind", "TypeScript", "Next.js", "Lucide Icons"];
 
@@ -11,6 +13,18 @@ const Header = () => {
   const [isSearchLoading, setIsSearchLoading] = useState(false);
   const [focused, setFocused] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
+
+  const displayingMedia = useSelector((state: RootState) => state.displayingMedialSlice);
+
+  const [mediaDisplaying, setMediaDisplaying] = useState(displayingMedia.mediaId != undefined);
+
+  useEffect(() => {
+    if (displayingMedia.mediaId) {
+      setMediaDisplaying(true);
+    } else {
+      setMediaDisplaying(false);
+    }
+  }, [displayingMedia]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -52,7 +66,7 @@ const Header = () => {
         </div>
 
         <div className="w-[20rem] flex items-center gap-4 flex-1 max-w-4xl min-h-full">
-          <div ref={searchRef} className="relative flex-1">
+          <div ref={searchRef} className={`relative flex-1` + (mediaDisplaying ? " hidden" : "")}>
             <div className={`flex items-center px-4 py-1 h-[2rem] rounded-3xl transition-all duration-200 ${focused ? "bg-white" : "bg-gray-300"}`}>
               <input
                 type="text"

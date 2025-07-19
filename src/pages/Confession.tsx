@@ -6,13 +6,17 @@ import { ConfessionPageRouteConfig } from "../routes/config";
 // import { useAppDispatch } from "../redux/hooks";
 import { ConfessionLayout } from "./layouts/list/ConfessionLayout";
 import LeftMenu from "../components/ConfessionComponent/LeftMenu";
-import { Outlet } from "react-router-dom";
+import { Outlet, useOutlet, useOutletContext } from "react-router-dom";
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
-import PostDisplayModal from "../components/ConfessionComponent/PostDisplayModal";
+import PostModalDisplay from "../components/ConfessionComponent/MainContentConfessionTable/display/PostModalDisplay";
 
 const Confession = () => {
   const [routeState, setRouteState] = useState(defineState(ConfessionPageRouteConfig));
+
+  const mainOutlet = useOutlet();
+  const outletContext = useOutletContext();
+  const overlayOutlet = outletContext === "overlay" ? mainOutlet : null;
 
   const [modalOpen, setModalOpen] = useState(false);
   const selectedPost = useSelector((state: RootState) => state.postDetailModalSlice.post);
@@ -33,8 +37,10 @@ const Confession = () => {
         <div className="flex-1 max-w-[60rem] border-x border-[#4f4f4f] dark:border-[#4f4f4f]">
           <Outlet />
 
-          {modalOpen && selectedPost && <PostDisplayModal isOpen={modalOpen} post={selectedPost} />}
+          {modalOpen && selectedPost && <PostModalDisplay isOpen={modalOpen} post={selectedPost} />}
         </div>
+
+        {overlayOutlet && <div className="fixed inset-0 z-50 bg-[#000000a2]">{overlayOutlet}</div>}
 
         {/* Right Section */}
         <div className="w-[20rem] px-4 hidden xl:block">

@@ -42,7 +42,7 @@ const MainContentConfessionTable = () => {
       {/* Post list */}
       <div className="space-y-4">
         {mockPosts.map((item) => (
-          <PostItem data={item} />
+          <PostItem post={item} />
         ))}
       </div>
     </div>

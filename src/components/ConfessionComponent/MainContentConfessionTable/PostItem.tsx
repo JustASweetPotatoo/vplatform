@@ -5,37 +5,37 @@ import UserProfileShortCut from "../UserProfileShortCut";
 import PostImageRender from "./PostImageRender";
 import type { Post } from "../../../interface/Post";
 import { useDispatch } from "react-redux";
-import { setDisplayPost } from "../../../redux/reducer/slices/PostDetailModalSlices";
+import { setDisplayPost } from "../../../redux/reducer/slices/PostModalSlices";
 
 interface PostItemProps {
   underContent?: React.FC;
-  data: Post;
+  post: Post;
 }
 
 const PostItem: React.FC<PostItemProps> = (props) => {
   const dispatch = useDispatch();
 
   const handlePostClickAction = (_e: React.MouseEvent) => {
-    dispatch(setDisplayPost(props.data));
+    dispatch(setDisplayPost(props.post));
   };
 
   return (
-    <div key={props.data.id} className="p-4 border border-gray-300 dark:border-none rounded-lg bg-white dark:bg-[#252525]">
-      <UserProfileShortCut userProfile={props.data.userProfile} data={"Create timestamp"} className="flex items-center gap-4 w-full mb-5" />
+    <div key={props.post.id} className="p-4 border border-gray-300 dark:border-none rounded-lg bg-white dark:bg-[#252525]">
+      <UserProfileShortCut userProfile={props.post.userProfile} data={"Create timestamp"} className="flex items-center gap-4 w-full mb-5" />
 
       <div className="mt-5" onClick={handlePostClickAction}>
-        {props.data.description}
+        {props.post.description}
       </div>
 
-      {props.data.images && <PostImageRender images={props.data.images}></PostImageRender>}
+      {props.post.images && <PostImageRender post={props.post} images={props.post.images}></PostImageRender>}
 
       <div className="flex flex-row h-10 mt-5 w-full justify-between bg-[#383838] rounded-2xl">
         <div className="h-full flex flex-row space-x-4">
           <button className="transition-colors cursor-pointer duration-200 hover:bg-gray-300 dark:hover:bg-[#838383] px-4 rounded-2xl">
-            <FontAwesomeIcon icon={faChevronUp} className="text-xl" /> {props.data.upvote ?? 0}
+            <FontAwesomeIcon icon={faChevronUp} className="text-xl" /> {props.post.upvote ?? 0}
           </button>
           <button className="transition-colors cursor-pointer duration-200 hover:bg-gray-300 dark:hover:bg-[#838383] px-4 rounded-2xl">
-            <FontAwesomeIcon icon={faChevronDown} className="text-xl" /> {props.data.downvote ?? 0}
+            <FontAwesomeIcon icon={faChevronDown} className="text-xl" /> {props.post.downvote ?? 0}
           </button>
           <button className="transition-colors cursor-pointer duration-200 hover:bg-gray-300 dark:hover:bg-[#838383] px-4 rounded-2xl">
             <FontAwesomeIcon icon={faChevronUp} className="text-xl" /> EMOJI 1
@@ -47,7 +47,7 @@ const PostItem: React.FC<PostItemProps> = (props) => {
 
         <div className="h-full flex flex-row space-x-4">
           <button className="px-4 rounded-2xl hover:underline cursor-pointer" onClick={handlePostClickAction}>
-            {props.data.comments.length} bình luận
+            {props.post.comments.length} bình luận
           </button>
           <button className="px-4 rounded-2xl hover:underline cursor-pointer">{5} Chia sẻ</button>
         </div>
